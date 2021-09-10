@@ -1,0 +1,35 @@
+{
+  "repositoryUrl": "https://github.com/dijalmasilva/template-eslint-prettier-semantic-release-typescript",
+  "branches": [
+    "main",
+    {
+      "name": "develop",
+      "channel": "beta",
+      "prerelease": "beta"
+    }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "docs/CHANGELOG.md"
+      }
+    ],
+    ["@semantic-release/npm", { "npmPublish": false }],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "package.json",
+          "yarn.lock",
+          "compiled/index.js",
+          "docs/CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    "@semantic-release/github"
+  ]
+}
